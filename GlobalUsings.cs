@@ -9,3 +9,5 @@ global using System.Runtime.InteropServices;
 global using System.Text;
 global using System.Threading.Tasks;
 global using System;
+global using SunamoFluentFtp.FtpClients;
+global using SunamoFtp.Base;

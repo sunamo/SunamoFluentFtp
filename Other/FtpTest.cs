@@ -1,8 +1,10 @@
+namespace SunamoFluentFtp.Other;
+
 public class FtpTest
 {
     public static void FluentFtp()
     {
-        SunamoFtp.FluentFtpWrapper fluentFtpWrapper = new SunamoFtp.FluentFtpWrapper();
+        FluentFtpWrapper fluentFtpWrapper = new SunamoFtp.FluentFtpWrapper();
 
         fluentFtpWrapper.TestBasicFunctionality();
     }

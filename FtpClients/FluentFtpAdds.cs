@@ -1,3 +1,5 @@
+namespace SunamoFluentFtp.FtpClients;
+
 public class FluentFtpAdds
 {
     public FtpClient client = null;

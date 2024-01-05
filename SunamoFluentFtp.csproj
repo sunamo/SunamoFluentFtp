@@ -6,15 +6,13 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\SunamoFtp\SunamoFtp.csproj" />
-    <ProjectReference Include="..\sunamo\sunamo.csproj">
-    </ProjectReference>
+    <PackageReference Include="SunamoCl" Version="23.12.9.2" />
+    <PackageReference Include="SunamoShared" Version="23.12.17.2" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentFTP" Version="48.0.3" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
-    </PackageReference>
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0">
-    </PackageReference>
+    <PackageReference Include="FluentFTP" Version="49.0.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0"></PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0"></PackageReference>
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

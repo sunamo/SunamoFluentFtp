@@ -1,3 +1,5 @@
+namespace SunamoFluentFtp.Enums;
+
 public enum SunamoFtpParser
 {
     Custom = -1,
