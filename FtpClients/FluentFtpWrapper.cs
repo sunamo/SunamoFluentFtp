@@ -1,8 +1,9 @@
-using SunamoCl;
+
 using SunamoData.Data;
 using SunamoExceptions.InSunamoIsDerivedFrom;
 using SunamoExceptions.OnlyInSE;
 using SunamoFileSystem;
+using SunamoLogger.Logger.LoggerBaseNS;
 using SunamoValues;
 
 namespace SunamoFluentFtp.FtpClients;
