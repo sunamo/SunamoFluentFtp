@@ -1,3 +1,5 @@
+namespace SunamoFluentFtp.Properties;
+
 //namespace SunamoFluentFtp.Properties;
 
 //// General Information about an assembly is controlled through the following

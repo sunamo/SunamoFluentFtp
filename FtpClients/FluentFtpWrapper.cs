@@ -31,7 +31,7 @@ public class FluentFtpWrapper : FtpBaseNew
     {
         Connect();
 
-        CL.WriteLine(client.GetChmod(AllStringsSE.slash));
+        Console.WriteLine(client.GetChmod(AllStringsSE.slash));
 
         // get a list of files and directories in the "/" + "htdocs" folder
         foreach (FtpListItem item in client.GetListing(AllStringsSE.slash))
@@ -44,8 +44,8 @@ public class FluentFtpWrapper : FtpBaseNew
                 long size = client.GetFileSize(item.FullName);
             }
 
-            CL.WriteLine(item.Chmod);
-            CL.WriteLine(item.Name);
+            Console.WriteLine(item.Chmod);
+            Console.WriteLine(item.Name);
 
 
             // get modified date/time of the file or folder
@@ -258,7 +258,7 @@ UploadFile(string path)
 #if ASYNC
 await
 #endif
-TFSE.ReadAllBytesArray(path), FS.GetFileName(path), FtpRemoteExists.Overwrite);
+TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
     }
 
 

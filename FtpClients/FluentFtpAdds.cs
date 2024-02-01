@@ -1,4 +1,7 @@
+
 namespace SunamoFluentFtp.FtpClients;
+using SunamoFluentFtp.Enums;
+
 
 public class FluentFtpAdds
 {
