@@ -3,12 +3,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>24.2.1.3</Version>
+    <Version>24.2.6.2</Version>
     <Description>Wrapper around FluentFtp library</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
-    <PackageReference Include="SunamoFtp" Version="24.2.1.1" />
+    <PackageReference Include="SunamoFtp" Version="24.2.6.2" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>

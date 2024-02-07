@@ -12,7 +12,7 @@ public class FluentFtpWrapper : FtpBaseNew
     {
 #if DEBUG
         var v = client.GetWorkingDirectory();
-        DebugLogger.Instance.WriteLine(v);
+        //DebugLogger.Instance.WriteLine(v);
 #endif
     }
 
