@@ -1,6 +1,6 @@
 namespace SunamoFluentFtp.Other;
 
-public class FtpTest
+public class FluentFtpTest
 {
     public static void FluentFtp()
     {

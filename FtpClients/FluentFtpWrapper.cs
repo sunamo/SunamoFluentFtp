@@ -31,10 +31,10 @@ public class FluentFtpWrapper : FtpBaseNew
     {
         Connect();
 
-        Console.WriteLine(client.GetChmod(AllStringsSE.slash));
+        Console.WriteLine(client.GetChmod(AllStrings.slash));
 
         // get a list of files and directories in the "/" + "htdocs" folder
-        foreach (FtpListItem item in client.GetListing(AllStringsSE.slash))
+        foreach (FtpListItem item in client.GetListing(AllStrings.slash))
         {
 
             // if this is a file
@@ -160,9 +160,9 @@ public class FluentFtpWrapper : FtpBaseNew
     /// <param name="slozkaNaHostingu"></param>
     public override void goToPath(string slozkaNaHostingu)
     {
-        if (!slozkaNaHostingu.StartsWith(AllStringsSE.slash))
+        if (!slozkaNaHostingu.StartsWith(AllStrings.slash))
         {
-            slozkaNaHostingu = AllStringsSE.slash + slozkaNaHostingu;
+            slozkaNaHostingu = AllStrings.slash + slozkaNaHostingu;
         }
 
         wd = slozkaNaHostingu;
