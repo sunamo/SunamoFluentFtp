@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp.FtpClients;
+namespace SunamoFluentFtp;
 
 public class FluentFtpWrapper : FtpBaseNew
 {

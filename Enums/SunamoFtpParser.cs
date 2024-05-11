@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp.Enums;
+namespace SunamoFluentFtp;
 
 public enum SunamoFtpParser
 {

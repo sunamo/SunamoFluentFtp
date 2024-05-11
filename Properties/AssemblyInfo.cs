@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp.Properties;
+namespace SunamoFluentFtp;
 
 //namespace SunamoFluentFtp.Properties;
 
