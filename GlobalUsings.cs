@@ -7,7 +7,7 @@ global using System.IO;
 global using System.Threading.Tasks;
 
 global using FluentFTP;
-global using SunamoFluentFtp.FtpClients;
+
 
 global using System.Text;
 global using System.Collections.Generic;

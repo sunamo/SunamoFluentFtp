@@ -1,6 +1,6 @@
 
 namespace SunamoFluentFtp;
-using SunamoFluentFtp.Enums;
+
 
 
 public class FluentFtpAdds
