@@ -21,6 +21,10 @@
     <Compile Include="..\SunamoExceptions\OnlyInSE\Exc.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exc.cs" />
     <Compile Include="..\SunamoExceptions\OnlyInSE\Types.cs" Link="_linked\SunamoExceptions\OnlyInSE\Types.cs" />
     <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
+    <Compile Include="..\SunamoFtp\Base\FtpBaseNew.cs" Link="_linked\SunamoFtp\Base\FtpBaseNew.cs" />
+    <Compile Include="..\SunamoCollectionsGeneric\Collections\D.cs" Link="_linked\SunamoCollectionsGeneric\Collections\D.cs" />
+    <Compile Include="..\SunamoData\Data\UploadFile.cs" Link="_linked\SunamoData\Data\UploadFile.cs" />
+    <Compile Include="..\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" Link="_linked\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp</DefineConstants>
