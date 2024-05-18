@@ -8,7 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
-    <PackageReference Include="SunamoFtp" Version="24.2.6.2" />
     <Compile Include="..\SunamoExceptions\OnlyInSE\ThrowEx.cs" Link="_linked\SunamoExceptions\OnlyInSE\ThrowEx.cs" />
     <Compile Include="..\SunamoValues\AllStrings.cs" Link="_linked\SunamoValues\AllStrings.cs" />
     <Compile Include="..\SunamoData\Data\DirectoriesToDelete.cs" Link="_linked\SunamoData\Data\DirectoriesToDelete.cs" />
