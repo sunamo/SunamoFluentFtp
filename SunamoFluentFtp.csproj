@@ -3,28 +3,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>24.2.6.2</Version>
+    <Version>24.5.21.1</Version>
     <Description>Wrapper around FluentFtp library</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
-    <Compile Include="..\SunamoData\Data\DirectoriesToDelete.cs" Link="_linked\SunamoData\Data\DirectoriesToDelete.cs" />
-    <Compile Include="..\SunamoFtp\Base\FtpBaseNew.cs" Link="_linked\SunamoFtp\Base\FtpBaseNew.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\ThrowEx.cs" Link="_linked\SunamoExceptions\OnlyInSE\ThrowEx.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\Exc.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exc.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\Exceptions.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exceptions.cs" />
-    <Compile Include="..\SunamoFtp\Base\FtpAbstract.cs" Link="_linked\SunamoFtp\Base\FtpAbstract.cs" />
-    <Compile Include="..\SunamoValues\AllStrings.cs" Link="_linked\SunamoValues\AllStrings.cs" />
-    <Compile Include="..\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" Link="_linked\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" />
-    <Compile Include="..\SunamoValues\Consts.cs" Link="_linked\SunamoValues\Consts.cs" />
-    <Compile Include="..\SunamoFtp\Base\PathSelector.cs" Link="_linked\SunamoFtp\Base\PathSelector.cs" />
-    <Compile Include="..\SunamoInterfaces\Interfaces\IFtpClientExt.cs" Link="_linked\SunamoInterfaces\Interfaces\IFtpClientExt.cs" />
-    <Compile Include="..\SunamoValues\AllChars.cs" Link="_linked\SunamoValues\AllChars.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\TranslateAble.cs" Link="_linked\SunamoExceptions\OnlyInSE\TranslateAble.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\FSSunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\FSSunamoExceptions.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\SHSunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\SHSunamoExceptions.cs" />
-    <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp</DefineConstants>
