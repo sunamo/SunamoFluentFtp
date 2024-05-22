@@ -1,7 +1,7 @@
 namespace SunamoFluentFtp;
 
 
-public abstract class FtpBaseNew : FtpAbstract, IDisposable
+internal abstract class FtpBaseNew : FtpAbstract, IDisposable
 {
     public abstract void DebugAllEntries();
     public abstract void DebugDirChmod(string dir);
