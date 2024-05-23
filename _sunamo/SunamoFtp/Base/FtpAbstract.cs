@@ -1,56 +1,56 @@
 namespace SunamoFluentFtp;
 
 
-internal abstract class FtpAbstract
+public abstract class FtpAbstract
 {
     #region Variables
-    internal IFtpClientExt MainWindow = null;
+    public IFtpClientExt MainWindow = null;
     /// <summary>
-    /// Je internal jen kvůli třídě Ftp
+    /// Je public jen kvůli třídě Ftp
     /// </summary>
-    internal PathSelector ps = null;
+    public PathSelector ps = null;
     /// <summary>
     /// Vzdálený hostitel
     /// </summary>
-    internal string remoteHost;
+    public string remoteHost;
     /// <summary>
     /// Uživatel který se pokouší přihlásit - používá se s příkazem USER
     /// </summary>
-    internal string remoteUser;
+    public string remoteUser;
     /// <summary>
     /// Heslo uživatele který se pokouší autentizovat. Posílá se s příkazem PASS
     /// </summary>F
-    internal string remotePass;
+    public string remotePass;
     /// <summary>
     /// 
     /// </summary>
-    internal int remotePort;
-    internal bool logined;
+    public int remotePort;
+    public bool logined;
     /// <summary>
     /// Pokud bude nastaveno na false, nebude se uploadovat na hosting nic - používá se pouze v této třídě, proto všechno ostatní bude fungovat normálně
     /// </summary>
-    internal bool reallyUpload = true;
+    public bool reallyUpload = true;
     /// <summary>
     /// Počet výjimek u jedné operace. Ideální pro to aby napočítalo do 3 a pak celou operaci zrušilo
     /// </summary>
     protected int pocetExc = 0;
     protected int maxPocetExc = 3;
     protected bool startup = true;
-    internal ulong folderSizeRec = 0;
+    public ulong folderSizeRec = 0;
     #endregion
     #region Set variables methods
     /// <summary>
     /// S PP remoteHost A1
     /// </summary>
     /// <param name="remoteHost"></param>
-    internal void setRemoteHost(string remoteHost)
+    public void setRemoteHost(string remoteHost)
     {
         this.remoteHost = remoteHost;
     }
     /// <summary>
     /// G adresu vzdáleného hostitele
     /// </summary>
-    internal string getRemoteHost()
+    public string getRemoteHost()
     {
         return remoteHost;
     }
@@ -58,14 +58,14 @@ internal abstract class FtpAbstract
     /// S PP remotePort A1
     /// </summary>
     /// <param name="remotePort"></param>
-    internal void setRemotePort(int remotePort)
+    public void setRemotePort(int remotePort)
     {
         this.remotePort = remotePort;
     }
     /// <summary>
     /// G port který se používá pro vzdálený přenos
     /// </summary>
-    internal int getRemotePort()
+    public int getRemotePort()
     {
         return remotePort;
     }
@@ -73,7 +73,7 @@ internal abstract class FtpAbstract
     /// S PP remoteUser A1
     /// </summary>
     /// <param name="remoteUser"></param>
-    internal void setRemoteUser(string remoteUser)
+    public void setRemoteUser(string remoteUser)
     {
         this.remoteUser = remoteUser;
     }
@@ -81,29 +81,29 @@ internal abstract class FtpAbstract
     /// S PP remotePass A1
     /// </summary>
     /// <param name="remotePass"></param>
-    internal void setRemotePass(string remotePass)
+    public void setRemotePass(string remotePass)
     {
         this.remotePass = remotePass;
     }
     #endregion
-    internal abstract void Connect();
-    internal abstract void D(string what, string text, params object[] args);
-    internal abstract void DebugActualFolder();
+    public abstract void Connect();
+    public abstract void D(string what, string text, params object[] args);
+    public abstract void DebugActualFolder();
     #region Abstract methods
-    internal abstract bool mkdir(string dirName);
-    internal abstract bool download(string remFileName, string locFileName, bool deleteLocalIfExists);
-    internal abstract bool deleteRemoteFile(string fileName);
-    internal abstract void renameRemoteFile(string oldFileName, string newFileName);
-    internal abstract bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName);
-    internal abstract void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td);
-    internal abstract void CreateDirectoryIfNotExists(string dirName);
-    internal abstract List<string> ListDirectoryDetails();
-    internal abstract Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS);
-    internal abstract void chdirLite(string dirName);
-    internal abstract void goToUpFolderForce();
-    internal abstract void goToUpFolder();
-    internal abstract void LoginIfIsNot(bool startup);
-    internal abstract long getFileSize(string filename);
-    internal abstract void goToPath(string slozkaNaHostingu);
+    public abstract bool mkdir(string dirName);
+    public abstract bool download(string remFileName, string locFileName, bool deleteLocalIfExists);
+    public abstract bool deleteRemoteFile(string fileName);
+    public abstract void renameRemoteFile(string oldFileName, string newFileName);
+    public abstract bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName);
+    public abstract void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td);
+    public abstract void CreateDirectoryIfNotExists(string dirName);
+    public abstract List<string> ListDirectoryDetails();
+    public abstract Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS);
+    public abstract void chdirLite(string dirName);
+    public abstract void goToUpFolderForce();
+    public abstract void goToUpFolder();
+    public abstract void LoginIfIsNot(bool startup);
+    public abstract long getFileSize(string filename);
+    public abstract void goToPath(string slozkaNaHostingu);
     #endregion
 }

@@ -1,28 +1,28 @@
 namespace SunamoFluentFtp;
 
 
-internal class PathSelector
+public class PathSelector
 {
     string firstToken = "";
-    internal List<string> tokens = new List<string>();
+    public List<string> tokens = new List<string>();
     bool firstTokenMustExists = false;
     string delimiter = "";
-    internal string Delimiter
+    public string Delimiter
     {
         get
         {
             return delimiter;
         }
     }
-    internal int indexZero = 0;
-    internal string FirstToken
+    public int indexZero = 0;
+    public string FirstToken
     {
         get
         {
             return firstToken;
         }
     }
-    internal List<string> DivideToTokens(string r)
+    public List<string> DivideToTokens(string r)
     {
         return r.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
@@ -31,7 +31,7 @@ internal class PathSelector
     /// Pracuje buď s \ nebo s / - podle toho co najde v A1. Libovolně lze přidat další oddělovače
     /// </summary>
     /// <param name="initialDirectory"></param>
-    internal PathSelector(string initialDirectory)
+    public PathSelector(string initialDirectory)
     {
         if (initialDirectory.Contains(":\\") || initialDirectory != "")
         {
@@ -72,12 +72,12 @@ internal class PathSelector
             return tokens.Count;
         }
     }
-    internal void RemoveLastTokenForce()
+    public void RemoveLastTokenForce()
     {
         tokens.RemoveAt(Count - 1);
     }
     static Type type = typeof(PathSelector);
-    internal void RemoveLastToken()
+    public void RemoveLastToken()
     {
         if (CanGoToUpFolder)
         {
@@ -88,22 +88,22 @@ internal class PathSelector
             throw new Exception("Is not possible go to up folder");
         }
     }
-    internal string GetLastToken()
+    public string GetLastToken()
     {
         return tokens[Count - 1];
     }
-    internal void AddToken(string token)
+    public void AddToken(string token)
     {
         tokens.Add(token);
     }
-    internal bool CanGoToUpFolder
+    public bool CanGoToUpFolder
     {
         get
         {
             return Count > indexZero;
         }
     }
-    internal string
+    public string
         ActualPath
     {
         get
