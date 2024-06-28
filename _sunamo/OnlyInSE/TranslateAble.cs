@@ -1,3 +1,5 @@
+
+namespace SunamoFluentFtp;
 public class TranslateAble
 {
     

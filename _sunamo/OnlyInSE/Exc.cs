@@ -1,3 +1,5 @@
+
+namespace SunamoFluentFtp;
 using System.Diagnostics;
 using System.Text;
 
