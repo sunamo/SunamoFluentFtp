@@ -4,7 +4,7 @@ namespace SunamoFluentFtp;
 internal abstract class FtpAbstract
 {
     #region Variables
-    internal IFtpClientExt MainWindow = null;
+
     /// <summary>
     /// Je internal jen kvůli třídě Ftp
     /// </summary>

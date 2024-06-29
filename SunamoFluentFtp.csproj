@@ -9,6 +9,9 @@
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_sunamo\SunamoInterfaces\Interfaces\" />
+  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp</DefineConstants>
   </PropertyGroup>
