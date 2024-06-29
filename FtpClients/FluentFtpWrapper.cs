@@ -266,7 +266,7 @@ TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite)
 
 
 
-    internal override void Dispose()
+    public override void Dispose()
     {
         client.Dispose();
     }
