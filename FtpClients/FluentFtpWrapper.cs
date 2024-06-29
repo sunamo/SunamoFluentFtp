@@ -1,14 +1,17 @@
 namespace SunamoFluentFtp;
 
-public class FluentFtpWrapper : FtpBaseNew
+/// <summary>
+/// Prvky této třídy jsem udělal internal protože její nadřazené prvky musí být max internal. A tím pádem nemůžou být internal zde
+/// </summary>
+internal class FluentFtpWrapper : FtpBaseNew
 {
     static Type type = typeof(FluentFtpWrapper);
-    public FtpClient client = null;
-    public FluentFtpAdds adds = new FluentFtpAdds();
+    internal FtpClient client = null;
+    internal FluentFtpAdds adds = new FluentFtpAdds();
 
 
 
-    public override void DebugActualFolder()
+    internal override void DebugActualFolder()
     {
 #if DEBUG
         var v = client.GetWorkingDirectory();
@@ -16,18 +19,18 @@ public class FluentFtpWrapper : FtpBaseNew
 #endif
     }
 
-    public override void D(string what, string text, params object[] args)
+    internal override void D(string what, string text, params object[] args)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override void DebugAllEntries()
+    internal override void DebugAllEntries()
     {
         ThrowEx.NotImplementedMethod();
     }
 
 
-    public void TestBasicFunctionality()
+    internal void TestBasicFunctionality()
     {
         Connect();
 
@@ -89,7 +92,7 @@ public class FluentFtpWrapper : FtpBaseNew
 
     }
 
-    public override void Connect()
+    internal override void Connect()
     {
 
         #region https://github.com/robinrodricks/FluentFTP/wiki/Quick-Start-Example.
@@ -117,7 +120,7 @@ public class FluentFtpWrapper : FtpBaseNew
     #region Other
 
 
-    public override void CreateDirectoryIfNotExists(string dirName)
+    internal override void CreateDirectoryIfNotExists(string dirName)
     {
         // check if a folder exists
         if (!client.DirectoryExists(dirName))
@@ -128,25 +131,25 @@ public class FluentFtpWrapper : FtpBaseNew
 
 
 
-    public override bool deleteRemoteFile(string fileName)
+    internal override bool deleteRemoteFile(string fileName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    public override bool download(string remFileName, string locFileName, bool deleteLocalIfExists)
+    internal override bool download(string remFileName, string locFileName, bool deleteLocalIfExists)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    public override long getFileSize(string filename)
+    internal override long getFileSize(string filename)
     {
         ThrowEx.NotImplementedMethod();
         return 0;
     }
 
-    public override Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS)
+    internal override Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS)
     {
         ThrowEx.NotImplementedMethod();
         return null;
@@ -158,7 +161,7 @@ public class FluentFtpWrapper : FtpBaseNew
     /// Ve FluentFTP toto není třeba.
     /// </summary>
     /// <param name="slozkaNaHostingu"></param>
-    public override void goToPath(string slozkaNaHostingu)
+    internal override void goToPath(string slozkaNaHostingu)
     {
         if (!slozkaNaHostingu.StartsWith(AllStrings.slash))
         {
@@ -170,17 +173,17 @@ public class FluentFtpWrapper : FtpBaseNew
         //ThrowEx.NotImplementedMethod();
     }
 
-    public override void goToUpFolder()
+    internal override void goToUpFolder()
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override void goToUpFolderForce()
+    internal override void goToUpFolderForce()
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override List<string> ListDirectoryDetails()
+    internal override List<string> ListDirectoryDetails()
     {
         return null;
 
@@ -201,37 +204,37 @@ public class FluentFtpWrapper : FtpBaseNew
         //return result.ToList();
     }
 
-    public override void LoginIfIsNot(bool startup)
+    internal override void LoginIfIsNot(bool startup)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override bool mkdir(string dirName)
+    internal override bool mkdir(string dirName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    public override void renameRemoteFile(string oldFileName, string newFileName)
+    internal override void renameRemoteFile(string oldFileName, string newFileName)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
+    internal override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
     #endregion
 
-    public override void DebugDirChmod(string dir)
+    internal override void DebugDirChmod(string dir)
     {
         //ConsoleLogger.Instance.WriteLine(client.GetChmod(dir).ToString());
         //client.Chmod(dir, 777)
     }
 
     #region Other
-    public override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
+    internal override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -241,12 +244,12 @@ public class FluentFtpWrapper : FtpBaseNew
     /// Must be here due to interface
     /// </summary>
     /// <param name="dirName"></param>
-    public override void chdirLite(string dirName)
+    internal override void chdirLite(string dirName)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    public override
+    internal override
 #if ASYNC
 async Task
 #else
@@ -263,7 +266,7 @@ TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite)
 
 
 
-    public override void Dispose()
+    internal override void Dispose()
     {
         client.Dispose();
     }
