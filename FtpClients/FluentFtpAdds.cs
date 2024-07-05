@@ -1,4 +1,3 @@
-
 namespace SunamoFluentFtp.FtpClients;
 
 

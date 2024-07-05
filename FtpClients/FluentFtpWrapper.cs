@@ -265,8 +265,9 @@ TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite)
     }
 
 
-
-    public override void Dispose()
+    // IDisposable tu být nemůže - jelikož je v _sunamo, musí být internal
+    // proto je zde internal
+    internal override void Dispose()
     {
         client.Dispose();
     }

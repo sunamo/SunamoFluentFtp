@@ -1,7 +1,10 @@
-namespace SunamoFluentFtp._sunamo.SunamoFtp.Base;
+﻿namespace SunamoFluentFtp._sunamo.SunamoFtp.Base;
 
 
-internal abstract class FtpBaseNew : FtpAbstract, IDisposable
+/// <summary>
+/// IDisposable tu být nemůže - jelikož je v _sunamo, musí být internal
+/// </summary>
+internal abstract class FtpBaseNew : FtpAbstract//, IDisposable
 {
     internal abstract void DebugAllEntries();
     internal abstract void DebugDirChmod(string dir);

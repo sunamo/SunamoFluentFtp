@@ -1,4 +1,3 @@
-
 namespace SunamoFluentFtp._sunamo.SunamoExceptions.OnlyInSE;
 internal class TranslateAble
 {
