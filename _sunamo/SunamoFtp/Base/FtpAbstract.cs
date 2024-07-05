@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp;
+namespace SunamoFluentFtp._sunamo.SunamoFtp.Base;
 
 
 internal abstract class FtpAbstract

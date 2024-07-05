@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp;
+namespace SunamoFluentFtp.FtpClients;
 
 /// <summary>
 /// Prvky této třídy jsem udělal internal protože její nadřazené prvky musí být max internal. A tím pádem nemůžou být internal zde

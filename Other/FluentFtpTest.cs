@@ -1,4 +1,4 @@
-namespace SunamoFluentFtp;
+namespace SunamoFluentFtp.Other;
 
 public class FluentFtpTest
 {

@@ -1,5 +1,5 @@
 
-namespace SunamoFluentFtp;
+namespace SunamoFluentFtp.FtpClients;
 
 
 
