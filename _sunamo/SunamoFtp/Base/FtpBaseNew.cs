@@ -1,4 +1,4 @@
-﻿namespace SunamoFluentFtp._sunamo.SunamoFtp.Base;
+namespace SunamoFluentFtp._sunamo.SunamoFtp.Base;
 
 
 /// <summary>
