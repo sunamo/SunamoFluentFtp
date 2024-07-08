@@ -5,6 +5,12 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Version>24.7.1.1</Version>
     <Description>Wrapper around FluentFtp library</Description>
+    <Authors>www.sunamo.cz</Authors>
+    <Copyright>www.sunamo.cz</Copyright>
+    <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sunamo/SunamoFluentFtp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
