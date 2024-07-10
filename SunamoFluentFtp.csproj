@@ -11,17 +11,19 @@
     <RepositoryUrl>https://github.com/sunamo/SunamoFluentFtp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="49.0.2" />
+    <None Include="readme.md" Pack="True" PackagePath="." />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_sunamo\SunamoInterfaces\Interfaces\" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp;SunamoFluentFtp.csproj</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp;SunamoFluentFtp.csproj</DefineConstants>
   </PropertyGroup>
 </Project>
