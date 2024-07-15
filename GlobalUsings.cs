@@ -15,10 +15,10 @@ global using SunamoFluentFtp.Other;
 global using SunamoFluentFtp._sunamo.SunamoStringGetLines;
 global using SunamoFluentFtp._sunamo.SunamoValues;
 global using SunamoFluentFtp._sunamo.SunamoXlfKeys;
-global using SunamoFluentFtp._sunamo.SunamoData.Data;
+
 global using SunamoFluentFtp._sunamo.SunamoExceptions.InSunamoIsDerivedFrom;
 global using SunamoFluentFtp._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoFluentFtp._sunamo.SunamoExceptions._AddedToAllCsproj;
-global using SunamoFluentFtp._sunamo.SunamoFtp.Base;
+
 global using System.Diagnostics;
 global using System.Net;

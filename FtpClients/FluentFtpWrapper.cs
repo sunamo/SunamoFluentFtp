@@ -1,17 +1,20 @@
+using SunamoFluentFtp._public;
+using SunamoFluentFtp._public.SunamoFtp.Base;
+
 namespace SunamoFluentFtp.FtpClients;
 
 /// <summary>
-/// Prvky této třídy jsem udělal internal protože její nadřazené prvky musí být max internal. A tím pádem nemůžou být internal zde
+/// Prvky této třídy jsem udělal public protože její nadřazené prvky musí být max internal. A tím pádem nemůžou být public zde
 /// </summary>
-internal class FluentFtpWrapper : FtpBaseNew
+public class FluentFtpWrapper : FtpBaseNewFluentFtp
 {
     static Type type = typeof(FluentFtpWrapper);
-    internal FtpClient client = null;
-    internal FluentFtpAdds adds = new FluentFtpAdds();
+    public FtpClient client = null;
+    public FluentFtpAdds adds = new FluentFtpAdds();
 
 
 
-    internal override void DebugActualFolder()
+    public override void DebugActualFolder()
     {
 #if DEBUG
         var v = client.GetWorkingDirectory();
@@ -19,18 +22,18 @@ internal class FluentFtpWrapper : FtpBaseNew
 #endif
     }
 
-    internal override void D(string what, string text, params object[] args)
+    public override void D(string what, string text, params object[] args)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override void DebugAllEntries()
+    public override void DebugAllEntries()
     {
         ThrowEx.NotImplementedMethod();
     }
 
 
-    internal void TestBasicFunctionality()
+    public void TestBasicFunctionality()
     {
         Connect();
 
@@ -92,7 +95,7 @@ internal class FluentFtpWrapper : FtpBaseNew
 
     }
 
-    internal override void Connect()
+    public override void Connect()
     {
 
         #region https://github.com/robinrodricks/FluentFTP/wiki/Quick-Start-Example.
@@ -120,7 +123,7 @@ internal class FluentFtpWrapper : FtpBaseNew
     #region Other
 
 
-    internal override void CreateDirectoryIfNotExists(string dirName)
+    public override void CreateDirectoryIfNotExists(string dirName)
     {
         // check if a folder exists
         if (!client.DirectoryExists(dirName))
@@ -131,25 +134,25 @@ internal class FluentFtpWrapper : FtpBaseNew
 
 
 
-    internal override bool deleteRemoteFile(string fileName)
+    public override bool deleteRemoteFile(string fileName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    internal override bool download(string remFileName, string locFileName, bool deleteLocalIfExists)
+    public override bool download(string remFileName, string locFileName, bool deleteLocalIfExists)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    internal override long getFileSize(string filename)
+    public override long getFileSize(string filename)
     {
         ThrowEx.NotImplementedMethod();
         return 0;
     }
 
-    internal override Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS)
+    public override Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS)
     {
         ThrowEx.NotImplementedMethod();
         return null;
@@ -161,7 +164,7 @@ internal class FluentFtpWrapper : FtpBaseNew
     /// Ve FluentFTP toto není třeba.
     /// </summary>
     /// <param name="slozkaNaHostingu"></param>
-    internal override void goToPath(string slozkaNaHostingu)
+    public override void goToPath(string slozkaNaHostingu)
     {
         if (!slozkaNaHostingu.StartsWith(AllStrings.slash))
         {
@@ -173,17 +176,17 @@ internal class FluentFtpWrapper : FtpBaseNew
         //ThrowEx.NotImplementedMethod();
     }
 
-    internal override void goToUpFolder()
+    public override void goToUpFolder()
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override void goToUpFolderForce()
+    public override void goToUpFolderForce()
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override List<string> ListDirectoryDetails()
+    public override List<string> ListDirectoryDetails()
     {
         return null;
 
@@ -204,37 +207,37 @@ internal class FluentFtpWrapper : FtpBaseNew
         //return result.ToList();
     }
 
-    internal override void LoginIfIsNot(bool startup)
+    public override void LoginIfIsNot(bool startup)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override bool mkdir(string dirName)
+    public override bool mkdir(string dirName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
 
-    internal override void renameRemoteFile(string oldFileName, string newFileName)
+    public override void renameRemoteFile(string oldFileName, string newFileName)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
+    public override bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
     }
     #endregion
 
-    internal override void DebugDirChmod(string dir)
+    public override void DebugDirChmod(string dir)
     {
         //ConsoleLogger.Instance.WriteLine(client.GetChmod(dir).ToString());
         //client.Chmod(dir, 777)
     }
 
     #region Other
-    internal override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDelete> td)
+    public override void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDeleteFluentFtp> td)
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -244,12 +247,12 @@ internal class FluentFtpWrapper : FtpBaseNew
     /// Must be here due to interface
     /// </summary>
     /// <param name="dirName"></param>
-    internal override void chdirLite(string dirName)
+    public override void chdirLite(string dirName)
     {
         ThrowEx.NotImplementedMethod();
     }
 
-    internal override
+    public override
 #if ASYNC
 async Task
 #else
@@ -267,7 +270,7 @@ TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite)
 
     // IDisposable tu být nemůže - jelikož je v _sunamo, musí být internal
     // proto je zde internal
-    internal override void Dispose()
+    public override void Dispose()
     {
         client.Dispose();
     }
