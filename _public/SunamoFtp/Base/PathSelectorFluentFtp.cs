@@ -1,6 +1,5 @@
 namespace SunamoFluentFtp._public.SunamoFtp.Base;
 
-
 public class PathSelectorFluentFtp
 {
     string firstToken = "";
@@ -120,7 +119,7 @@ public class PathSelectorFluentFtp
         set
         {
             tokens.Clear();
-            tokens.AddRange(value.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries)); //SHSplit.Split(value, delimiter));
+            tokens.AddRange(value.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries)); //SHSplit.SplitMore(value, delimiter));
         }
     }
 }
