@@ -1,7 +1,7 @@
-using SunamoFluentFtp._public;
-using SunamoFluentFtp._public.SunamoFtp.Base;
 
 namespace SunamoFluentFtp.FtpClients;
+using SunamoFluentFtp._public;
+using SunamoFluentFtp._public.SunamoFtp.Base;
 
 /// <summary>
 /// Prvky této třídy jsem udělal public protože její nadřazené prvky musí být max internal. A tím pádem nemůžou být public zde
