@@ -1,4 +1,4 @@
-//namespace SunamoFluentFtp._sunamo.SunamoExceptions._AddedToAllCsproj;
+namespace SunamoFluentFtp._sunamo;
 
 internal class CA
 {
