@@ -264,7 +264,7 @@ UploadFile(string path)
 #if ASYNC
 await
 #endif
-TFSE.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
+TF.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
     }
 
 
