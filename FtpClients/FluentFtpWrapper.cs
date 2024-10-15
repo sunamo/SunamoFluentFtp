@@ -1,4 +1,3 @@
-
 namespace SunamoFluentFtp.FtpClients;
 using SunamoFluentFtp._public;
 using SunamoFluentFtp._public.SunamoFtp.Base;
@@ -264,7 +263,7 @@ UploadFile(string path)
 #if ASYNC
 await
 #endif
-TF.ReadAllBytesArray(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
+File.ReadAllBytesAsync(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
     }
 
 
