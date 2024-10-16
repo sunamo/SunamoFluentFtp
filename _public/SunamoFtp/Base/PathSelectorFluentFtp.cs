@@ -36,24 +36,24 @@ public class PathSelectorFluentFtp
         {
             firstTokenMustExists = true;
         }
-        if (initialDirectory.Contains(AllStrings.bs))
+        if (initialDirectory.Contains("\""))
         {
-            delimiter = AllStrings.bs;
+            delimiter = "\"";
         }
         else
         {
-            delimiter = AllStrings.slash;
+            delimiter = "/";
             if (initialDirectory.Contains(delimiter))
             {
-                if (initialDirectory.StartsWith(AllStrings.slash))
+                if (initialDirectory.StartsWith("/"))
                 {
                     throw new Exception("Počáteční složka nemůže začínat s lomítkem na začátku");
-                    int druhy = initialDirectory.IndexOf(AllChars.slash, 1);
+                    int druhy = initialDirectory.IndexOf('/', 1);
                     firstToken = initialDirectory.Substring(0, druhy);
                 }
                 else
                 {
-                    int prvni = initialDirectory.IndexOf(AllChars.slash);
+                    int prvni = initialDirectory.IndexOf('/');
                     firstToken = initialDirectory.Substring(0, prvni);
                 }
             }
@@ -113,7 +113,7 @@ public class PathSelectorFluentFtp
             }
             else
             {
-                return AllStrings.slash;
+                return "/";
             }
         }
         set

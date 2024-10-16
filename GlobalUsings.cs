@@ -8,7 +8,7 @@ global using System.Collections;
 global using System.Linq;
 global using SunamoFluentFtp.Enums;
 global using SunamoFluentFtp.FtpClients;
-global using SunamoFluentFtp._sunamo.SunamoValues;
+global using SunamoFluentFtp;
 global using SunamoFluentFtp._sunamo.SunamoExceptions;
 global using System.Diagnostics;
 global using System.Diagnostics.CodeAnalysis;
