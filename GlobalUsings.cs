@@ -13,3 +13,7 @@ global using System.Diagnostics;
 global using System.Reflection;
 global using System.Net;
 global using System.Diagnostics.CodeAnalysis;
+global using SunamoFluentFtp.Other;
+global using SunamoFluentFtp._public;
+global using SunamoFluentFtp._sunamo;
+global using SunamoFluentFtp._public.SunamoFtp.Base;
