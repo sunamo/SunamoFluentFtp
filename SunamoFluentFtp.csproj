@@ -25,9 +25,9 @@
     <Folder Include="_sunamo\SunamoInterfaces\Interfaces\" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp;SunamoFluentFtp.csproj</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC;SunamoFluentFtp;SunamoFluentFtp.csproj</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
   </PropertyGroup>
 </Project>
