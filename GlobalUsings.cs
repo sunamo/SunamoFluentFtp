@@ -17,3 +17,7 @@ global using SunamoFluentFtp.Other;
 global using SunamoFluentFtp._public;
 global using SunamoFluentFtp._sunamo;
 global using SunamoFluentFtp._public.SunamoFtp.Base;
+
+global using ILogger = Microsoft.Extensions.Logging.ILogger;
+global using Microsoft.Extensions.Logging;
+global using NullLogger = Microsoft.Extensions.Logging.Abstractions.NullLogger;

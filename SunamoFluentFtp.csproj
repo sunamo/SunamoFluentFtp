@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="FluentFTP" Version="52.0.0" />
     <None Include="readme.md" Pack="True" PackagePath="." />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="*" Pack="True" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_sunamo\SunamoData\Data\" />
