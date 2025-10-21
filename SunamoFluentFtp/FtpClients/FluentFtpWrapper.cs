@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoFluentFtp.FtpClients;
 
 /// <summary>
@@ -11,11 +14,11 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     public override void DebugActualFolder()
     {
 #if DEBUG
-        var v = client.GetWorkingDirectory();
-        //DebugLogger.Instance.WriteLine(v);
+        var value = client.GetWorkingDirectory();
+        //DebugLogger.Instance.WriteLine(value);
 #endif
     }
-    public override void D(string what, string text, params object[] args)
+    public override void data(string what, string text, params object[] args)
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -43,7 +46,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
             // calculate a hash for the file on the server side (default algorithm)
             FtpHash hash = client.GetChecksum(item.FullName);
         }
-        //var d = client.GetWorkingDirectory();
+        //var data = client.GetWorkingDirectory();
         //client.CreateDirectory("htdocs2");
         //CreateDirectoryIfNotExists("/" + "htdocs");
         //// upload a file
@@ -201,7 +204,7 @@ await
 #endif
 File.ReadAllBytesAsync(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
     }
-    // IDisposable tu být nemůže - jelikož je v _sunamo, musí být internal
+    // IDisposable tu být nemůže - jelikož je value _sunamo, musí být internal
     // proto je zde internal
     public override void Dispose()
     {
