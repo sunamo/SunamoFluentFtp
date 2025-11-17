@@ -18,7 +18,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
         //DebugLogger.Instance.WriteLine(value);
 #endif
     }
-    public override void data(string what, string text, params object[] args)
+    public override void D(string what, string text, params object[] args)
     {
         ThrowEx.NotImplementedMethod();
     }
