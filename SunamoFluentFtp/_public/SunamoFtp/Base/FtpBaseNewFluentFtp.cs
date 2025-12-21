@@ -1,7 +1,4 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoFluentFtp._public.SunamoFtp.Base;
-
 
 /// <summary>
 /// IDisposable tu být nemůže - jelikož je v _sunamo, musí být internal
