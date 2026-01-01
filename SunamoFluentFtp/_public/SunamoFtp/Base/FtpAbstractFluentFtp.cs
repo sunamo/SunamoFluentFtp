@@ -1,108 +1,248 @@
 namespace SunamoFluentFtp._public.SunamoFtp.Base;
 
+/// <summary>
+/// Abstract base class for FTP operations
+/// </summary>
 public abstract class FtpAbstractFluentFtp
 {
     #region Variables
 
     /// <summary>
-    /// Je public jen kvůli třídě Ftp
+    /// Path selector for managing directory paths.
+    /// Public only because of the Ftp class
     /// </summary>
-    public PathSelectorFluentFtp ps = null;
+    public PathSelectorFluentFtp? PathSelector { get; set; }
+
     /// <summary>
-    /// Vzdálený hostitel
+    /// Remote host address
     /// </summary>
-    public string remoteHost;
+    public string? remoteHost;
+
     /// <summary>
-    /// Uživatel který se pokouší přihlásit - používá se s příkazem USER
+    /// User attempting to login - used with USER command
     /// </summary>
-    public string remoteUser;
+    public string? remoteUser;
+
     /// <summary>
-    /// Heslo uživatele který se pokouší autentizovat. Posílá se s příkazem PASS
-    /// </summary>F
-    public string remotePass;
+    /// Password for user authentication - sent with PASS command
+    /// </summary>
+    public string? remotePass;
+
     /// <summary>
-    /// 
+    /// Remote port number
     /// </summary>
     public int remotePort;
-    public bool logined;
+
     /// <summary>
-    /// Pokud bude nastaveno na false, nebude se uploadovat na hosting nic - používá se pouze v této třídě, proto všechno ostatní bude fungovat normálně
+    /// Indicates whether the user is logged in
+    /// </summary>
+    public bool isLoggedIn;
+
+    /// <summary>
+    /// If set to false, nothing will be uploaded to hosting - only used in this class, everything else will work normally
     /// </summary>
     public bool reallyUpload = true;
+
     /// <summary>
-    /// Počet výjimek u jedné operace. Ideální pro to aby napočítalo do 3 a pak celou operaci zrušilo
+    /// Number of exceptions for one operation - ideal for counting up to 3 and then canceling the entire operation
     /// </summary>
-    protected int pocetExc = 0;
-    protected int maxPocetExc = 3;
+    protected int exceptionCount = 0;
+
+    /// <summary>
+    /// Maximum number of exceptions allowed before operation is canceled
+    /// </summary>
+    protected int maxExceptionCount = 3;
+
+    /// <summary>
+    /// Indicates whether this is a startup operation
+    /// </summary>
     protected bool startup = true;
-    public ulong folderSizeRec = 0;
-    #endregion
-    #region Set variables methods
+
     /// <summary>
-    /// S PP remoteHost A1
+    /// Total folder size (recursive)
     /// </summary>
-    /// <param name="remoteHost"></param>
+    public ulong folderSizeRec = 0;
+
+    #endregion
+
+    #region Set variables methods
+
+    /// <summary>
+    /// Sets the remote host address
+    /// </summary>
+    /// <param name="remoteHost">Remote host address</param>
     public void setRemoteHost(string remoteHost)
     {
         this.remoteHost = remoteHost;
     }
+
     /// <summary>
-    /// G adresu vzdáleného hostitele
+    /// Gets the remote host address
     /// </summary>
+    /// <returns>Remote host address</returns>
     public string getRemoteHost()
     {
         return remoteHost;
     }
+
     /// <summary>
-    /// S PP remotePort A1
+    /// Sets the remote port number
     /// </summary>
-    /// <param name="remotePort"></param>
+    /// <param name="remotePort">Remote port number</param>
     public void setRemotePort(int remotePort)
     {
         this.remotePort = remotePort;
     }
+
     /// <summary>
-    /// G port který se používá pro vzdálený přenos
+    /// Gets the port used for remote transfer
     /// </summary>
+    /// <returns>Remote port number</returns>
     public int getRemotePort()
     {
         return remotePort;
     }
+
     /// <summary>
-    /// S PP remoteUser A1
+    /// Sets the remote user name
     /// </summary>
-    /// <param name="remoteUser"></param>
+    /// <param name="remoteUser">Remote user name</param>
     public void setRemoteUser(string remoteUser)
     {
         this.remoteUser = remoteUser;
     }
+
     /// <summary>
-    /// S PP remotePass A1
+    /// Sets the remote user password
     /// </summary>
-    /// <param name="remotePass"></param>
+    /// <param name="remotePass">Remote user password</param>
     public void setRemotePass(string remotePass)
     {
         this.remotePass = remotePass;
     }
+
     #endregion
+
+    /// <summary>
+    /// Connects to the FTP server
+    /// </summary>
     public abstract void Connect();
+
+    /// <summary>
+    /// Debug method with custom message
+    /// </summary>
+    /// <param name="what">Type of debug information</param>
+    /// <param name="text">Debug message text</param>
+    /// <param name="args">Optional format arguments</param>
     public abstract void D(string what, string text, params object[] args);
+
+    /// <summary>
+    /// Debugs the current folder
+    /// </summary>
     public abstract void DebugActualFolder();
+
     #region Abstract methods
-    public abstract bool mkdir(string dirName);
-    public abstract bool download(string remFileName, string locFileName, bool deleteLocalIfExists);
+
+    /// <summary>
+    /// Creates a directory
+    /// </summary>
+    /// <param name="directoryName">Name of the directory to create</param>
+    /// <returns>True if successful</returns>
+    public abstract bool mkdir(string directoryName);
+
+    /// <summary>
+    /// Downloads a file from remote to local
+    /// </summary>
+    /// <param name="remoteFileName">Remote file name</param>
+    /// <param name="localFileName">Local file name</param>
+    /// <param name="isDeleteLocalIfExists">Whether to delete local file if it exists</param>
+    /// <returns>True if successful</returns>
+    public abstract bool download(string remoteFileName, string localFileName, bool isDeleteLocalIfExists);
+
+    /// <summary>
+    /// Deletes a remote file
+    /// </summary>
+    /// <param name="fileName">Name of the file to delete</param>
+    /// <returns>True if successful</returns>
     public abstract bool deleteRemoteFile(string fileName);
+
+    /// <summary>
+    /// Renames a remote file
+    /// </summary>
+    /// <param name="oldFileName">Current file name</param>
+    /// <param name="newFileName">New file name</param>
     public abstract void renameRemoteFile(string oldFileName, string newFileName);
-    public abstract bool rmdir(List<string> slozkyNeuploadovatAVS, string dirName);
-    public abstract void DeleteRecursively(List<string> slozkyNeuploadovatAVS, string dirName, int i, List<DirectoriesToDeleteFluentFtp> td);
-    public abstract void CreateDirectoryIfNotExists(string dirName);
-    public abstract List<string> ListDirectoryDetails();
-    public abstract Dictionary<string, List<string>> getFSEntriesListRecursively(List<string> slozkyNeuploadovatAVS);
-    public abstract void chdirLite(string dirName);
+
+    /// <summary>
+    /// Removes a directory
+    /// </summary>
+    /// <param name="excludedDirectories">Directories to exclude from operation</param>
+    /// <param name="directoryName">Name of the directory to remove</param>
+    /// <returns>True if successful</returns>
+    public abstract bool rmdir(List<string> excludedDirectories, string directoryName);
+
+    /// <summary>
+    /// Deletes directory recursively
+    /// </summary>
+    /// <param name="excludedDirectories">Directories to exclude from deletion</param>
+    /// <param name="directoryName">Name of the directory to delete</param>
+    /// <param name="depth">Recursion depth</param>
+    /// <param name="directoriesToDelete">List of directories to delete</param>
+    public abstract void DeleteRecursively(List<string> excludedDirectories, string directoryName, int depth, List<DirectoriesToDeleteFluentFtp> directoriesToDelete);
+
+    /// <summary>
+    /// Creates a directory if it doesn't exist
+    /// </summary>
+    /// <param name="directoryName">Name of the directory to create</param>
+    public abstract void CreateDirectoryIfNotExists(string directoryName);
+
+    /// <summary>
+    /// Lists directory details
+    /// </summary>
+    /// <returns>List of directory entries</returns>
+    public abstract List<string>? ListDirectoryDetails();
+
+    /// <summary>
+    /// Gets filesystem entries list recursively
+    /// </summary>
+    /// <param name="excludedDirectories">Directories to exclude from listing</param>
+    /// <returns>Dictionary of directories and their contents</returns>
+    public abstract Dictionary<string, List<string>>? getFSEntriesListRecursively(List<string> excludedDirectories);
+
+    /// <summary>
+    /// Changes directory (lite version)
+    /// </summary>
+    /// <param name="directoryName">Directory name</param>
+    public abstract void chdirLite(string directoryName);
+
+    /// <summary>
+    /// Forces navigation to parent folder
+    /// </summary>
     public abstract void goToUpFolderForce();
+
+    /// <summary>
+    /// Navigates to parent folder
+    /// </summary>
     public abstract void goToUpFolder();
-    public abstract void LoginIfIsNot(bool startup);
+
+    /// <summary>
+    /// Logs in if not already logged in
+    /// </summary>
+    /// <param name="isStartup">Whether this is a startup login</param>
+    public abstract void LoginIfIsNot(bool isStartup);
+
+    /// <summary>
+    /// Gets the size of a file
+    /// </summary>
+    /// <param name="filename">Name of the file</param>
+    /// <returns>File size in bytes</returns>
     public abstract long getFileSize(string filename);
-    public abstract void goToPath(string slozkaNaHostingu);
+
+    /// <summary>
+    /// Navigates to specified path
+    /// </summary>
+    /// <param name="hostingPath">Path on the hosting server</param>
+    public abstract void goToPath(string hostingPath);
+
     #endregion
 }

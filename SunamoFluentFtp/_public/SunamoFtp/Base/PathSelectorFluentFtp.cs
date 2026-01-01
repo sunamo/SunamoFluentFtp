@@ -1,11 +1,23 @@
 namespace SunamoFluentFtp._public.SunamoFtp.Base;
 
+/// <summary>
+/// Manages path navigation and token manipulation for FTP operations
+/// </summary>
 public class PathSelectorFluentFtp
 {
-    string firstToken = "";
-    public List<string> tokens = new List<string>();
-    bool firstTokenMustExists = false;
-    string delimiter = "";
+    private string firstToken = "";
+
+    /// <summary>
+    /// List of path tokens
+    /// </summary>
+    public List<string> Tokens { get; set; } = new List<string>();
+
+    private bool firstTokenMustExists = false;
+    private string delimiter = "";
+
+    /// <summary>
+    /// Gets the delimiter used for path separation
+    /// </summary>
     public string Delimiter
     {
         get
@@ -13,7 +25,15 @@ public class PathSelectorFluentFtp
             return delimiter;
         }
     }
+
+    /// <summary>
+    /// Index of the first token (0 or 1 depending on whether first token must exist)
+    /// </summary>
     public int indexZero = 0;
+
+    /// <summary>
+    /// Gets the first token in the path
+    /// </summary>
     public string FirstToken
     {
         get
@@ -21,21 +41,30 @@ public class PathSelectorFluentFtp
             return firstToken;
         }
     }
-    public List<string> DivideToTokens(string r)
-    {
-        return r.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
-    }
+
     /// <summary>
-    /// A1 je složka, která je nejvyšší. Může být nastavena na C:\, www, SE nebo cokoliv jiného
-    /// Pracuje buď s \ nebo s / - podle toho co najde v A1. Libovolně lze přidat další oddělovače
+    /// Divides a path string into tokens
     /// </summary>
-    /// <param name="initialDirectory"></param>
+    /// <param name="path">Path to divide</param>
+    /// <returns>List of path tokens</returns>
+    public List<string> DivideToTokens(string path)
+    {
+        return path.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
+    /// <summary>
+    /// Initializes a new instance of PathSelectorFluentFtp.
+    /// The first parameter is the highest folder, can be set to C:\, www, SE, or anything else.
+    /// Works with either \ or / - depending on what is found in the parameter. Other delimiters can be added freely.
+    /// </summary>
+    /// <param name="initialDirectory">Initial directory path</param>
     public PathSelectorFluentFtp(string initialDirectory)
     {
         if (initialDirectory.Contains(":\\") || initialDirectory != "")
         {
             firstTokenMustExists = true;
         }
+
         if (initialDirectory.Contains("\""))
         {
             delimiter = "\"";
@@ -47,54 +76,79 @@ public class PathSelectorFluentFtp
             {
                 if (initialDirectory.StartsWith("/"))
                 {
-                    throw new Exception("Počáteční složka nemůže začínat s lomítkem na začátku");
-                    int druhy = initialDirectory.IndexOf('/', 1);
-                    firstToken = initialDirectory.Substring(0, druhy);
+                    throw new Exception("Initial directory cannot start with a slash");
                 }
                 else
                 {
-                    int prvni = initialDirectory.IndexOf('/');
-                    firstToken = initialDirectory.Substring(0, prvni);
+                    int firstSlashIndex = initialDirectory.IndexOf('/');
+                    firstToken = initialDirectory.Substring(0, firstSlashIndex);
                 }
             }
         }
+
         if (firstTokenMustExists)
         {
             indexZero = 1;
         }
+
         ActualPath = initialDirectory;
     }
-    int Count
+
+    /// <summary>
+    /// Gets the number of tokens
+    /// </summary>
+    private int Count
     {
         get
         {
-            return tokens.Count;
+            return Tokens.Count;
         }
     }
+
+    /// <summary>
+    /// Removes the last token without checking if it's possible
+    /// </summary>
     public void RemoveLastTokenForce()
     {
-        tokens.RemoveAt(Count - 1);
+        Tokens.RemoveAt(Count - 1);
     }
-    static Type type = typeof(PathSelectorFluentFtp);
+
+    /// <summary>
+    /// Removes the last token if possible
+    /// </summary>
     public void RemoveLastToken()
     {
         if (CanGoToUpFolder)
         {
-            tokens.RemoveAt(Count - 1);
+            Tokens.RemoveAt(Count - 1);
         }
         else
         {
-            throw new Exception("Is not possible go to up folder");
+            throw new Exception("Cannot navigate to parent folder");
         }
     }
+
+    /// <summary>
+    /// Gets the last token in the path
+    /// </summary>
+    /// <returns>Last token</returns>
     public string GetLastToken()
     {
-        return tokens[Count - 1];
+        return Tokens[Count - 1];
     }
+
+    /// <summary>
+    /// Adds a token to the path
+    /// </summary>
+    /// <param name="token">Token to add</param>
     public void AddToken(string token)
     {
-        tokens.Add(token);
+        Tokens.Add(token);
     }
+
+    /// <summary>
+    /// Gets whether navigation to parent folder is possible
+    /// </summary>
     public bool CanGoToUpFolder
     {
         get
@@ -102,14 +156,17 @@ public class PathSelectorFluentFtp
             return Count > indexZero;
         }
     }
-    public string
-        ActualPath
+
+    /// <summary>
+    /// Gets or sets the current path
+    /// </summary>
+    public string ActualPath
     {
         get
         {
-            if (tokens.Count != 0)
+            if (Tokens.Count != 0)
             {
-                return string.Join(delimiter, tokens.ToArray()) + delimiter;
+                return string.Join(delimiter, Tokens.ToArray()) + delimiter;
             }
             else
             {
@@ -118,8 +175,8 @@ public class PathSelectorFluentFtp
         }
         set
         {
-            tokens.Clear();
-            tokens.AddRange(value.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries)); //SHSplit.Split(value, delimiter));
+            Tokens.Clear();
+            Tokens.AddRange(value.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries));
         }
     }
 }
