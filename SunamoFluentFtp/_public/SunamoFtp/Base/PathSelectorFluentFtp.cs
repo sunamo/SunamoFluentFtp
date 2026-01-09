@@ -29,7 +29,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// Index of the first token (0 or 1 depending on whether first token must exist)
     /// </summary>
-    public int indexZero = 0;
+    public int IndexZero { get; set; } = 0;
 
     /// <summary>
     /// Gets the first token in the path
@@ -88,7 +88,7 @@ public class PathSelectorFluentFtp
 
         if (firstTokenMustExists)
         {
-            indexZero = 1;
+            IndexZero = 1;
         }
 
         ActualPath = initialDirectory;
@@ -153,7 +153,7 @@ public class PathSelectorFluentFtp
     {
         get
         {
-            return Count > indexZero;
+            return Count > IndexZero;
         }
     }
 

@@ -26,8 +26,8 @@ internal sealed partial class Exceptions
     internal static Tuple<string, string, string> PlaceOfException(bool isFillAlsoFirstTwo = true)
     {
         StackTrace stackTrace = new();
-        var value = stackTrace.ToString();
-        var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        var stackTraceText = stackTrace.ToString();
+        var lines = stackTraceText.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
 
         var currentIndex = 0;
@@ -36,17 +36,17 @@ internal sealed partial class Exceptions
 
         for (; currentIndex < lines.Count; currentIndex++)
         {
-            var item = lines[currentIndex];
+            var currentLine = lines[currentIndex];
             if (isFillAlsoFirstTwo)
             {
-                if (!item.StartsWith("   at ThrowEx"))
+                if (!currentLine.StartsWith("   at ThrowEx"))
                 {
-                    TypeAndMethodName(item, out type, out methodName);
+                    TypeAndMethodName(currentLine, out type, out methodName);
                     isFillAlsoFirstTwo = false;
                 }
             }
 
-            if (item.StartsWith("at System."))
+            if (currentLine.StartsWith("at System."))
             {
                 lines.Add(string.Empty);
                 lines.Add(string.Empty);
@@ -60,17 +60,17 @@ internal sealed partial class Exceptions
     /// <summary>
     /// Extracts type and method name from a stack trace line
     /// </summary>
-    /// <param name="lines">Stack trace line</param>
+    /// <param name="line">Stack trace line</param>
     /// <param name="type">Output: Type name</param>
     /// <param name="methodName">Output: Method name</param>
-    internal static void TypeAndMethodName(string lines, out string type, out string methodName)
+    internal static void TypeAndMethodName(string line, out string type, out string methodName)
     {
-        var trimmedLine = lines.Split("at ")[1].Trim();
+        var trimmedLine = line.Split("at ")[1].Trim();
         var methodPath = trimmedLine.Split("(")[0];
-        var parts = methodPath.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        methodName = parts[^1];
-        parts.RemoveAt(parts.Count - 1);
-        type = string.Join(".", parts);
+        var methodParts = methodPath.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        methodName = methodParts[^1];
+        methodParts.RemoveAt(methodParts.Count - 1);
+        type = string.Join(".", methodParts);
     }
 
     /// <summary>

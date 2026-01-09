@@ -63,12 +63,12 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
         {
             if (item.Type == FtpObjectType.File)
             {
-                long size = Client.GetFileSize(item.FullName);
+                Client.GetFileSize(item.FullName);
             }
             Console.WriteLine(item.Chmod);
             Console.WriteLine(item.Name);
-            DateTime time = Client.GetModifiedTime(item.FullName);
-            FtpHash hash = Client.GetChecksum(item.FullName);
+            Client.GetModifiedTime(item.FullName);
+            Client.GetChecksum(item.FullName);
         }
     }
 
@@ -77,7 +77,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     public override void Connect()
     {
-        Client = new FtpClient(remoteHost, remotePort, new FtpConfig() { });
+        Client = new FtpClient(RemoteHost, RemotePort, new FtpConfig() { });
         Client.Connect();
         Adds.Client = Client;
     }
@@ -128,9 +128,9 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <summary>
     /// Gets the size of a file
     /// </summary>
-    /// <param name="filename">Name of the file</param>
+    /// <param name="fileName">Name of the file</param>
     /// <returns>File size in bytes</returns>
-    public override long getFileSize(string filename)
+    public override long getFileSize(string fileName)
     {
         ThrowEx.NotImplementedMethod();
         return 0;
@@ -153,20 +153,20 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// Navigates to specified path.
     /// In FluentFTP this is not strictly necessary but maintained for interface compatibility.
     /// </summary>
-    /// <param name="hostingPath">Path on the hosting server</param>
-    public override void goToPath(string hostingPath)
+    /// <param name="remotePath">Path on the hosting server</param>
+    public override void goToPath(string remotePath)
     {
         if (Client == null)
         {
             throw new InvalidOperationException("Client is not initialized");
         }
 
-        if (!hostingPath.StartsWith("/"))
+        if (!remotePath.StartsWith("/"))
         {
-            hostingPath = "/" + hostingPath;
+            remotePath = "/" + remotePath;
         }
-        workingDirectory = hostingPath;
-        Client.SetWorkingDirectory(hostingPath);
+        workingDirectory = remotePath;
+        Client.SetWorkingDirectory(remotePath);
     }
 
     /// <summary>

@@ -16,52 +16,52 @@ public abstract class FtpAbstractFluentFtp
     /// <summary>
     /// Remote host address
     /// </summary>
-    public string? remoteHost;
+    public string? RemoteHost { get; set; }
 
     /// <summary>
     /// User attempting to login - used with USER command
     /// </summary>
-    public string? remoteUser;
+    public string? RemoteUser { get; set; }
 
     /// <summary>
     /// Password for user authentication - sent with PASS command
     /// </summary>
-    public string? remotePass;
+    public string? RemotePass { get; set; }
 
     /// <summary>
     /// Remote port number
     /// </summary>
-    public int remotePort;
+    public int RemotePort { get; set; }
 
     /// <summary>
     /// Indicates whether the user is logged in
     /// </summary>
-    public bool isLoggedIn;
+    public bool IsLoggedIn { get; set; }
 
     /// <summary>
     /// If set to false, nothing will be uploaded to hosting - only used in this class, everything else will work normally
     /// </summary>
-    public bool reallyUpload = true;
+    public bool ReallyUpload { get; set; } = true;
 
     /// <summary>
     /// Number of exceptions for one operation - ideal for counting up to 3 and then canceling the entire operation
     /// </summary>
-    protected int exceptionCount = 0;
+    protected int ExceptionCount { get; set; } = 0;
 
     /// <summary>
     /// Maximum number of exceptions allowed before operation is canceled
     /// </summary>
-    protected int maxExceptionCount = 3;
+    protected int MaxExceptionCount { get; set; } = 3;
 
     /// <summary>
     /// Indicates whether this is a startup operation
     /// </summary>
-    protected bool startup = true;
+    protected bool Startup { get; set; } = true;
 
     /// <summary>
     /// Total folder size (recursive)
     /// </summary>
-    public ulong folderSizeRec = 0;
+    public ulong FolderSizeRec { get; set; } = 0;
 
     #endregion
 
@@ -73,16 +73,16 @@ public abstract class FtpAbstractFluentFtp
     /// <param name="remoteHost">Remote host address</param>
     public void setRemoteHost(string remoteHost)
     {
-        this.remoteHost = remoteHost;
+        RemoteHost = remoteHost;
     }
 
     /// <summary>
     /// Gets the remote host address
     /// </summary>
     /// <returns>Remote host address</returns>
-    public string getRemoteHost()
+    public string? getRemoteHost()
     {
-        return remoteHost;
+        return RemoteHost;
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public abstract class FtpAbstractFluentFtp
     /// <param name="remotePort">Remote port number</param>
     public void setRemotePort(int remotePort)
     {
-        this.remotePort = remotePort;
+        RemotePort = remotePort;
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public abstract class FtpAbstractFluentFtp
     /// <returns>Remote port number</returns>
     public int getRemotePort()
     {
-        return remotePort;
+        return RemotePort;
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public abstract class FtpAbstractFluentFtp
     /// <param name="remoteUser">Remote user name</param>
     public void setRemoteUser(string remoteUser)
     {
-        this.remoteUser = remoteUser;
+        RemoteUser = remoteUser;
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public abstract class FtpAbstractFluentFtp
     /// <param name="remotePass">Remote user password</param>
     public void setRemotePass(string remotePass)
     {
-        this.remotePass = remotePass;
+        RemotePass = remotePass;
     }
 
     #endregion
@@ -234,15 +234,15 @@ public abstract class FtpAbstractFluentFtp
     /// <summary>
     /// Gets the size of a file
     /// </summary>
-    /// <param name="filename">Name of the file</param>
+    /// <param name="fileName">Name of the file</param>
     /// <returns>File size in bytes</returns>
-    public abstract long getFileSize(string filename);
+    public abstract long getFileSize(string fileName);
 
     /// <summary>
     /// Navigates to specified path
     /// </summary>
-    /// <param name="hostingPath">Path on the hosting server</param>
-    public abstract void goToPath(string hostingPath);
+    /// <param name="remotePath">Path on the hosting server</param>
+    public abstract void goToPath(string remotePath);
 
     #endregion
 }

@@ -13,11 +13,5 @@ public class FluentFtpAdds
     /// <summary>
     /// Gets or sets the FTP parser type
     /// </summary>
-    public SunamoFtpParser FtpParser
-    {
-        set
-        {
-            //client.ListingParser = (FtpParser)Enum.Parse(typeof(FtpParser), value.ToString());
-        }
-    }
+    public SunamoFtpParser FtpParser { get; set; }
 }
