@@ -23,7 +23,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     public override void DebugActualFolder()
     {
 #if DEBUG
-        var value = Client?.GetWorkingDirectory();
+        var currentDirectory = Client?.GetWorkingDirectory();
 #endif
     }
 
@@ -33,7 +33,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <param name="what">Type of debug information</param>
     /// <param name="text">Debug message text</param>
     /// <param name="args">Optional format arguments</param>
-    public override void D(string what, string text, params object[] args)
+    public override void Debug(string what, string text, params object[] args)
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -106,7 +106,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="fileName">Name of the file to delete</param>
     /// <returns>True if successful</returns>
-    public override bool deleteRemoteFile(string fileName)
+    public override bool DeleteRemoteFile(string fileName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
@@ -119,7 +119,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <param name="localFileName">Local file name</param>
     /// <param name="isDeleteLocalIfExists">Whether to delete local file if it exists</param>
     /// <returns>True if successful</returns>
-    public override bool download(string remoteFileName, string localFileName, bool isDeleteLocalIfExists)
+    public override bool Download(string remoteFileName, string localFileName, bool isDeleteLocalIfExists)
     {
         ThrowEx.NotImplementedMethod();
         return false;
@@ -130,7 +130,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="fileName">Name of the file</param>
     /// <returns>File size in bytes</returns>
-    public override long getFileSize(string fileName)
+    public override long GetFileSize(string fileName)
     {
         ThrowEx.NotImplementedMethod();
         return 0;
@@ -141,7 +141,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="excludedDirectories">Directories to exclude from listing</param>
     /// <returns>Dictionary of directories and their contents</returns>
-    public override Dictionary<string, List<string>>? getFSEntriesListRecursively(List<string> excludedDirectories)
+    public override Dictionary<string, List<string>>? GetFSEntriesListRecursively(List<string> excludedDirectories)
     {
         ThrowEx.NotImplementedMethod();
         return null;
@@ -154,7 +154,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// In FluentFTP this is not strictly necessary but maintained for interface compatibility.
     /// </summary>
     /// <param name="remotePath">Path on the hosting server</param>
-    public override void goToPath(string remotePath)
+    public override void GoToPath(string remotePath)
     {
         if (Client == null)
         {
@@ -172,7 +172,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <summary>
     /// Navigates to parent folder
     /// </summary>
-    public override void goToUpFolder()
+    public override void GoToUpFolder()
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -180,7 +180,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <summary>
     /// Forces navigation to parent folder
     /// </summary>
-    public override void goToUpFolderForce()
+    public override void GoToUpFolderForce()
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -208,7 +208,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="directoryName">Name of the directory</param>
     /// <returns>True if successful</returns>
-    public override bool mkdir(string directoryName)
+    public override bool Mkdir(string directoryName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
@@ -219,7 +219,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="oldFileName">Current file name</param>
     /// <param name="newFileName">New file name</param>
-    public override void renameRemoteFile(string oldFileName, string newFileName)
+    public override void RenameRemoteFile(string oldFileName, string newFileName)
     {
         ThrowEx.NotImplementedMethod();
     }
@@ -230,7 +230,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// <param name="excludedDirectories">Directories to exclude from operation</param>
     /// <param name="directoryName">Name of the directory to remove</param>
     /// <returns>True if successful</returns>
-    public override bool rmdir(List<string> excludedDirectories, string directoryName)
+    public override bool Rmdir(List<string> excludedDirectories, string directoryName)
     {
         ThrowEx.NotImplementedMethod();
         return false;
@@ -264,7 +264,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// Changes directory (lite version, must be here due to interface)
     /// </summary>
     /// <param name="directoryName">Directory name</param>
-    public override void chdirLite(string directoryName)
+    public override void ChdirLite(string directoryName)
     {
         ThrowEx.NotImplementedMethod();
     }

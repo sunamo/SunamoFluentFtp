@@ -1,3 +1,4 @@
+// variables names: ok
 namespace RunnerFluentFtp;
 
 internal class Program
