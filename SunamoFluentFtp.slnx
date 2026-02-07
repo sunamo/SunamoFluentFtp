@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoFluentFtp.Tests\\SunamoFluentFtp.Tests.csproj" />
+  <Project Path="RunnerFluentFtp\\RunnerFluentFtp.csproj" />
+  <Project Path="SunamoFluentFtp\SunamoFluentFtp.csproj" />
+</Solution>
