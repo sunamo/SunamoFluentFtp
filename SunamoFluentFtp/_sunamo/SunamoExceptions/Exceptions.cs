@@ -1,28 +1,15 @@
 namespace SunamoFluentFtp._sunamo.SunamoExceptions;
 
-/// <summary>
-/// Exception handling utilities
-/// © www.sunamo.cz. All Rights Reserved.
-/// </summary>
+// © www.sunamo.cz. All Rights Reserved.
 internal sealed partial class Exceptions
 {
     #region Other
 
-    /// <summary>
-    /// Checks and formats a prefix for exception messages
-    /// </summary>
-    /// <param name="before">Prefix text</param>
-    /// <returns>Formatted prefix with colon or empty string</returns>
     internal static string CheckBefore(string before)
     {
         return string.IsNullOrWhiteSpace(before) ? string.Empty : before + ": ";
     }
 
-    /// <summary>
-    /// Gets the place where exception occurred including type, method name and stack trace
-    /// </summary>
-    /// <param name="isFillAlsoFirstTwo">Whether to fill type and method name from first non-ThrowEx entry</param>
-    /// <returns>Tuple containing type name, method name, and stack trace</returns>
     internal static Tuple<string, string, string> PlaceOfException(bool isFillAlsoFirstTwo = true)
     {
         StackTrace stackTrace = new();
@@ -57,12 +44,6 @@ internal sealed partial class Exceptions
         return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
     }
 
-    /// <summary>
-    /// Extracts type and method name from a stack trace line
-    /// </summary>
-    /// <param name="line">Stack trace line</param>
-    /// <param name="type">Output: Type name</param>
-    /// <param name="methodName">Output: Method name</param>
     internal static void TypeAndMethodName(string line, out string type, out string methodName)
     {
         var trimmedLine = line.Split("at ")[1].Trim();
@@ -73,16 +54,11 @@ internal sealed partial class Exceptions
         type = string.Join(".", methodParts);
     }
 
-    /// <summary>
-    /// Gets the name of the calling method
-    /// </summary>
-    /// <param name="value">Frame depth (1 = immediate caller)</param>
-    /// <returns>Method name</returns>
     internal static string CallingMethod(int value = 1)
     {
         StackTrace stackTrace = new();
         var methodBase = stackTrace.GetFrame(value)?.GetMethod();
-        if (methodBase == null)
+        if (methodBase is null)
         {
             return "Method name cannot be get";
         }
@@ -94,25 +70,14 @@ internal sealed partial class Exceptions
 
     #region IsNullOrWhitespace
 
-    /// <summary>
-    /// StringBuilder for inner additional info
-    /// </summary>
     internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
 
-    /// <summary>
-    /// StringBuilder for additional info
-    /// </summary>
     internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
 
     #endregion
 
     #region OnlyReturnString
 
-    /// <summary>
-    /// Creates exception message for not implemented method
-    /// </summary>
-    /// <param name="before">Prefix for the message</param>
-    /// <returns>Exception message</returns>
     internal static string? NotImplementedMethod(string before)
     {
         return CheckBefore(before) + "Not implemented method.";
