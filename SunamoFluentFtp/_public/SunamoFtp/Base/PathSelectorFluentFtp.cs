@@ -10,7 +10,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// List of path tokens
     /// </summary>
-    public List<string> Tokens { get; set; } = new List<string>();
+    public List<string> Tokens { get; set; } = new();
 
     private bool firstTokenMustExists = false;
     private string delimiter = "";
@@ -18,13 +18,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// Gets the delimiter used for path separation
     /// </summary>
-    public string Delimiter
-    {
-        get
-        {
-            return delimiter;
-        }
-    }
+    public string Delimiter => delimiter;
 
     /// <summary>
     /// Index of the first token (0 or 1 depending on whether first token must exist)
@@ -34,13 +28,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// Gets the first token in the path
     /// </summary>
-    public string FirstToken
-    {
-        get
-        {
-            return firstToken;
-        }
-    }
+    public string FirstToken => firstToken;
 
     /// <summary>
     /// Divides a path string into tokens
@@ -97,13 +85,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// Gets the number of tokens
     /// </summary>
-    private int Count
-    {
-        get
-        {
-            return Tokens.Count;
-        }
-    }
+    private int Count => Tokens.Count;
 
     /// <summary>
     /// Removes the last token without checking if it's possible
@@ -132,10 +114,7 @@ public class PathSelectorFluentFtp
     /// Gets the last token in the path
     /// </summary>
     /// <returns>Last token</returns>
-    public string GetLastToken()
-    {
-        return Tokens[Count - 1];
-    }
+    public string GetLastToken() => Tokens[Count - 1];
 
     /// <summary>
     /// Adds a token to the path
@@ -149,13 +128,7 @@ public class PathSelectorFluentFtp
     /// <summary>
     /// Gets whether navigation to parent folder is possible
     /// </summary>
-    public bool CanGoToUpFolder
-    {
-        get
-        {
-            return Count > IndexZero;
-        }
-    }
+    public bool CanGoToUpFolder => Count > IndexZero;
 
     /// <summary>
     /// Gets or sets the current path

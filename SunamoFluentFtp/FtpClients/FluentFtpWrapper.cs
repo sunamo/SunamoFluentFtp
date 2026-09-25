@@ -22,9 +22,6 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     public override void DebugActualFolder()
     {
-#if DEBUG
-        var currentDirectory = Client?.GetWorkingDirectory();
-#endif
     }
 
     /// <summary>
@@ -274,11 +271,7 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
     /// </summary>
     /// <param name="path">Local file path</param>
     public override
-#if ASYNC
     async Task
-#else
-    void
-#endif
     UploadFile(string path)
     {
         if (Client == null)
@@ -287,10 +280,8 @@ public class FluentFtpWrapper : FtpBaseNewFluentFtp
         }
 
         Client.UploadBytes(
-#if ASYNC
         await
-#endif
-        File.ReadAllBytesAsync(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
+        FileAsync.ReadAllBytesAsync(path), Path.GetFileName(path), FtpRemoteExists.Overwrite);
     }
 
     /// <summary>

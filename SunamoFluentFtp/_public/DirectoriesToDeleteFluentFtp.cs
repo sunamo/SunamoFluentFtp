@@ -13,5 +13,5 @@ public class DirectoriesToDeleteFluentFtp
     /// <summary>
     /// List of directories with their contents
     /// </summary>
-    public List<Dictionary<string, List<string>>> Directories { get; set; } = new List<Dictionary<string, List<string>>>();
+    public List<Dictionary<string, List<string>>> Directories { get; set; } = new();
 }
