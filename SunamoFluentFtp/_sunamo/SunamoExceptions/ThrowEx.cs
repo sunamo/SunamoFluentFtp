@@ -1,7 +1,14 @@
 namespace SunamoFluentFtp._sunamo.SunamoExceptions;
 
+/// <summary>
+/// Exception throwing utilities
+/// </summary>
 internal partial class ThrowEx
 {
+    /// <summary>
+    /// Throws exception for not implemented method
+    /// </summary>
+    /// <returns>True if exception was thrown</returns>
     internal static bool NotImplementedMethod()
     {
         return ThrowIsNotNull(Exceptions.NotImplementedMethod);
@@ -9,6 +16,10 @@ internal partial class ThrowEx
 
     #region Other
 
+    /// <summary>
+    /// Gets the full name of the executed code (type.method)
+    /// </summary>
+    /// <returns>Full name in format Type.Method</returns>
     internal static string FullNameOfExecutedCode()
     {
         Tuple<string, string, string> placeOfException = Exceptions.PlaceOfException();
@@ -16,6 +27,13 @@ internal partial class ThrowEx
         return fullName;
     }
 
+    /// <summary>
+    /// Gets the full name of executed code from type and method name
+    /// </summary>
+    /// <param name="type">Type information (can be Type, MethodBase, or string)</param>
+    /// <param name="methodName">Method name</param>
+    /// <param name="isFromThrowEx">Whether called from ThrowEx (adjusts stack depth)</param>
+    /// <returns>Full name in format Type.Method</returns>
     static string FullNameOfExecutedCode(object type, string methodName, bool isFromThrowEx = false)
     {
         if (methodName is null)
@@ -52,6 +70,12 @@ internal partial class ThrowEx
         return string.Concat(typeFullName, ".", methodName);
     }
 
+    /// <summary>
+    /// Throws exception if the exception string is not null
+    /// </summary>
+    /// <param name="exception">Exception message</param>
+    /// <param name="isReallyThrow">Whether to actually throw the exception or just return true</param>
+    /// <returns>True if exception is not null</returns>
     internal static bool ThrowIsNotNull(string? exception, bool isReallyThrow = true)
     {
         if (exception is not null)
@@ -68,6 +92,11 @@ internal partial class ThrowEx
 
     #region For avoid FullNameOfExecutedCode
 
+    /// <summary>
+    /// Throws exception using a function that generates the exception message
+    /// </summary>
+    /// <param name="exceptionFunc">Function that generates exception message</param>
+    /// <returns>True if exception was thrown</returns>
     internal static bool ThrowIsNotNull(Func<string, string?> exceptionFunc)
     {
         string? exception = exceptionFunc(FullNameOfExecutedCode());
