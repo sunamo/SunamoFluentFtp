@@ -27,10 +27,6 @@ public abstract class FtpBaseNewFluentFtp : FtpAbstractFluentFtp
     /// </summary>
     /// <param name="path">Local file path to upload</param>
     public abstract
-#if ASYNC
     Task
-#else
-    void
-#endif
     UploadFile(string path);
 }

@@ -10,7 +10,7 @@ public class FluentFtpTest
     /// </summary>
     public static void FluentFtp()
     {
-        FluentFtpWrapper fluentFtpWrapper = new FluentFtpWrapper();
+        var fluentFtpWrapper = new FluentFtpWrapper();
         fluentFtpWrapper.TestBasicFunctionality();
     }
 }
