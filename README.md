@@ -1,5 +1,10 @@
 # SunamoFluentFtp
 
+## Short description
+
+Obal nad knihovnou FluentFtp pro práci s FTP.
+
+
 Wrapper around FluentFtp library
 
 ## Overview
