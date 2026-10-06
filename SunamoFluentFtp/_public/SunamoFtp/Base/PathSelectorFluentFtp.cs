@@ -1,8 +1,5 @@
 namespace SunamoFluentFtp._public.SunamoFtp.Base;
 
-/// <summary>
-/// Manages path navigation and token manipulation for FTP operations
-/// </summary>
 public class PathSelectorFluentFtp
 {
     private string firstToken = "";
@@ -20,9 +17,6 @@ public class PathSelectorFluentFtp
     /// </summary>
     public string Delimiter => delimiter;
 
-    /// <summary>
-    /// Index of the first token (0 or 1 depending on whether first token must exist)
-    /// </summary>
     public int IndexZero { get; set; } = 0;
 
     /// <summary>
@@ -30,22 +24,13 @@ public class PathSelectorFluentFtp
     /// </summary>
     public string FirstToken => firstToken;
 
-    /// <summary>
-    /// Divides a path string into tokens
-    /// </summary>
-    /// <param name="path">Path to divide</param>
-    /// <returns>List of path tokens</returns>
     public List<string> DivideToTokens(string path)
     {
         return path.Split(new string[] { delimiter }, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
 
-    /// <summary>
-    /// Initializes a new instance of PathSelectorFluentFtp.
-    /// The first parameter is the highest folder, can be set to C:\, www, SE, or anything else.
-    /// Works with either \ or / - depending on what is found in the parameter. Other delimiters can be added freely.
-    /// </summary>
-    /// <param name="initialDirectory">Initial directory path</param>
+    // The first parameter is the highest folder, can be set to C:\, www, SE, or anything else.
+    // Works with either \ or / - depending on what is found in the parameter. Other delimiters can be added freely.
     public PathSelectorFluentFtp(string initialDirectory)
     {
         if (initialDirectory.Contains(":\\") || initialDirectory != "")
@@ -87,17 +72,11 @@ public class PathSelectorFluentFtp
     /// </summary>
     private int Count => Tokens.Count;
 
-    /// <summary>
-    /// Removes the last token without checking if it's possible
-    /// </summary>
     public void RemoveLastTokenForce()
     {
         Tokens.RemoveAt(Count - 1);
     }
 
-    /// <summary>
-    /// Removes the last token if possible
-    /// </summary>
     public void RemoveLastToken()
     {
         if (CanGoToUpFolder)
@@ -116,10 +95,6 @@ public class PathSelectorFluentFtp
     /// <returns>Last token</returns>
     public string GetLastToken() => Tokens[Count - 1];
 
-    /// <summary>
-    /// Adds a token to the path
-    /// </summary>
-    /// <param name="token">Token to add</param>
     public void AddToken(string token)
     {
         Tokens.Add(token);
@@ -130,9 +105,6 @@ public class PathSelectorFluentFtp
     /// </summary>
     public bool CanGoToUpFolder => Count > IndexZero;
 
-    /// <summary>
-    /// Gets or sets the current path
-    /// </summary>
     public string ActualPath
     {
         get
