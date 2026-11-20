@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoFluentFtp.FtpClients;
 
 public class FluentFtpAdds
