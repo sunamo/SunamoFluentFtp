@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>26.5.18.4</Version>
+    <Version>26.11.23.1</Version>
     <Description>Wrapper around FluentFtp library</Description>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
